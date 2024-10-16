@@ -1,5 +1,6 @@
 import java.util.PriorityQueue;
 
+// Approach 1: Priority Queue
 class Pair {
      int count;
      char letter;
@@ -12,7 +13,7 @@ class Pair {
  
  class Solution {
      public String longestDiverseString(int a, int b, int c) {
-       PriorityQueue<Pair> pq = new PriorityQueue<>((x, y) -> y.count - x.count);
+       PriorityQueue<Pair> pq = new PriorityQueue<>((x, y) -> y.count - x.count); // MAX HEAP 
  
       if (a > 0) {
              pq.add(new Pair(a, 'a'));
@@ -55,5 +56,42 @@ class Pair {
        return  sb.toString();
      }
  }
+// Time Complexity : O(a + b+ c) Space Complexity is O(1)
+
+// Approach 2: Greedy Approach
+// class Solution {
+//     public String longestDiverseString(int a, int b, int c) {
+//         StringBuilder sb = new StringBuilder();
+
+//         int n = a +b +c;
+//         int curA =0, curB =0, curC =0;
+
+//         for(int i=0; i<n; i++){
+//             if((a>=b && a>=c && curA !=2) || (a>0 && (curB==2 || curC ==2))){
+//                 sb.append('a');
+//                 a--;
+//                 curA++;
+//                 curB =0;
+//                 curC =0;
+//             }
+//             else if((b>=a && b>=c && curB !=2) || (b>0 && (curA==2 || curC==2))){
+//                 sb.append('b');
+//                 b--;
+//                 curB++;
+//                 curC =0;
+//                 curA =0;
+//             }
+
+//             else if((c>=a && c>=b && curC !=2) || (c>0 && (curA==2 || curB ==2))){
+//                 sb.append('c');
+//                 c--;
+//                 curC++;
+//                 curA=0;
+//                 curB =0;
+//             }
+//         }
+//         return sb.toString();
+//     }
+// }
  
  
